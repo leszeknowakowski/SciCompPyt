@@ -1,0 +1,10 @@
+import numpy as np
+
+list1 = list(range(0,16))
+for i in list1:
+    x = bin(list1[i])
+    y=hex(list1[i])
+    z = oct(list1[i]0
+    print(x)
+    print(y)
+    print(z)
