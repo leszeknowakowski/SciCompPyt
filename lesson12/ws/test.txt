@@ -1,0 +1,12 @@
+    calculates the nth Fibonacci number iteratively.
+
+    >>> fibonacci(0)
+    0
+    >>> fibonacci(1)
+    1
+    >>> fibonacci(10)
+    55
+    >>> fibonacci(15)
+    610
+    >>>
+
