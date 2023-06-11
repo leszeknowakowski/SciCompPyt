@@ -1,0 +1,49 @@
+W moim projekcie zaliczeniowym chciałbym się skupić na narysowaniu struktury
+krystalicznej badanych przeze mnie materiałów w oparciu o pliki wejściowe/
+wyjściowe z programu do obliczeń kwantowochemicznych VASP. Program składał
+by się z  następujących elementów:
+ 0) dane wstępne:
+     - lista wszystkich atomów z promieniami jonowymi
+     - lista wszystkich atomów wraz z domyślnymi kolorami
+ 1) skonstruowanie klasy do parsingu pliku POSCAR/CONTCAR:
+     - funkcja konstrukcji wektorów jednostkowych komórki elementarnej
+     - funkcja definiująca stechiometrię i zawartość komórki elementarnej
+     - funkcja zwracająca pozycje atomów wraz z więzami
+
+ 2) klasa rysująca komórkę:
+    - funkcja rysująca komórkę elementarną, tj. równoległościan
+    - funkcja rysująca kule o odpowiednim promieniu i kolorze w punktach
+      zdefiniowanych w poprzedniej klasie
+    - funkcja rysująca cylinder / linię między atomami, między któymi odległość
+      jest mniejsa od zadanej
+    - funkcje dodatkowe, np. pokazujące więzy, numery atomów, ich symbole
+
+ 3) Jeśli starczy czasu prosty GUI
+ 4) testy
+
+Motywacją do stworzenia programu jest częsta potrzeba szybkiego podglądania
+sktruktury zwartej w w/w plikach. Przykładowy plik POSCAR/CONTCAR jest
+załączony w niniejszym folderze wraz z opisem poszczególnych składowych pliku.
+
+Metody wykonania:
+1) parsing:
+    Ze względu na stosunkowo prostą konstrukcję pliku parsing nie powinien
+    sprawić problemów. Trzeba zdefiniować parametry komórki elementarnej:
+    wektory i, j, k oraz ich składowe kartezjańskie. Następnie skonstruować
+    słownik z numerem atomu jako kluczem i jego symbolem jako wartością,
+    np. {1:O, 2:O, 3:Si, 4:Al...} itp. Następnie skonstruować słownik z
+    koordynatami jako listy {1:[1,1,1], 2:[1,1,0],...} itp. i słownik z
+    więzami.
+2) struktura
+    Atomy narysuję jako sfery o promieniu i kolorze odpowiednim dla
+    danego atomu. Użyję do tego funkcji plot_surface z modułu matplotlib.
+    Następnie sfery połączę liniami.
+    Problemem może być narysowanie prostopadłościanu definiującego komórkę
+    elementarną. Prawdopodobnie będe musiał "na piechotę" znaleźć współrzędne
+    wszystkich 8 wierzchołków i połączyć je odpowiednio w ściany.
+    Kolejno skonstruuję funkcje, którę będą pokazywać numer atomu, jego symbol
+    oraz ewentualne więzy.
+3)  planowany przeze mnie GUI to prosty interfejs z paroma buttonami aby
+    pokazać / ukryć więzy, numery atomów itp.
+4)  Planuję dodać testy z różnymi wersjami pliku POSCAR jak również tymi
+    niewłaściwie skonstruowanymi.
